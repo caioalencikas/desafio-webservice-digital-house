@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
-        tools:src="@drawable/poster" />
+        android:src="@drawable/poster" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,22 +25,24 @@
         >
 
         <TextView
+            android:id="@+id/txtNameHqDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto_medium"
             android:layout_marginTop="70dp"
             android:textSize="20sp"
-            android:text="AMAZING SPIDER-MAN (2014) #1 (MHAN VARIANT)"
+            tools:text="AMAZING SPIDER-MAN (2014) #1 (MHAN VARIANT)"
             />
 
         <TextView
+            android:id="@+id/txtSummaryHqDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:fontFamily="@font/roboto_light"
             android:justificationMode="inter_word"
-            android:text="The Greatest Super Hero of All Time Returns! The world maay have changed since Spidey's been gone, but so has Peter parker. This is a man with a second chance at life, and ghes not wasting a momonet of it. sam eparker luck, new partker attitutde putting the frinedlu back n the neighbordhoood the hero back into super hero, adn the amazing back into spider-man also returning the recharged and erenergiczed electro"
+            tools:text="The Greatest Super Hero of All Time Returns! The world maay have changed since Spidey's been gone, but so has Peter parker. This is a man with a second chance at life, and ghes not wasting a momonet of it. sam eparker luck, new partker attitutde putting the frinedlu back n the neighbordhoood the hero back into super hero, adn the amazing back into spider-man also returning the recharged and erenergiczed electro"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -54,15 +56,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="Published: "
+                android:text="@string/published"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/txtDateHqDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:text="April 30, 2014"
+                tools:text="April 30, 2014"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -80,15 +83,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="Price: $ "
+                android:text="@string/price"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/txtPriceHqDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:text="5,99"
+                tools:text="5,99"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -106,15 +110,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="Pages: "
+                android:text="@string/pages"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/txtPagesHqDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:text="38"
+                tools:text="38"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -133,6 +138,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imgHqDetails"
             android:layout_width="100dp"
             android:layout_height="200dp"
             android:scaleType="centerCrop"

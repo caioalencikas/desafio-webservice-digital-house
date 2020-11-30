@@ -51,6 +51,13 @@ class MainActivity : AppCompatActivity() {
 
         val viewAdapterPhotos = HqMainAdapter(hqList) {
             val intent = Intent(this, HqDetailsActivity::class.java)
+            intent.putExtra("NAME", it.name)
+            intent.putExtra("DATE", it.datePublished)
+            intent.putExtra("SUMMARY", it.summary)
+            intent.putExtra("IMAGE", it.image)
+            intent.putExtra("PRICE", it.price)
+            intent.putExtra("PAGES", it.pages)
+
             startActivity(intent)
         }
 
