@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.desafio_webservice_digital_house.main.MainActivity
+import com.example.desafio_webservice_digital_house.main.view.MainActivity
 import com.example.desafio_webservice_digital_house.R
 
 class LoginActivity : AppCompatActivity() {

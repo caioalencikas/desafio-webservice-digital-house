@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafiowebservicedigitalhouse">
-        <activity android:name=".account.RegisterActivity">
-        </activity>
+        <activity android:name=".detail.view.HqDetailsActivity"></activity>
+        <activity android:name=".account.RegisterActivity"></activity>
         <activity android:name=".account.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity">
-        </activity>
+        <activity android:name=".main.view.MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
