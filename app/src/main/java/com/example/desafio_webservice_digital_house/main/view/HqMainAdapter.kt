@@ -15,14 +15,20 @@ class HqMainAdapter (private val dataset: List<HqModel>, private val listener: (
     RecyclerView.Adapter<HqMainAdapter.HqMainViewHolder>() {
 
     class HqMainViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        private val _image: ImageView = view.findViewById(R.id.imgHqMain)
+        private val _thumbnail: ImageView = view.findViewById(R.id.imgHqMain)
+        private val _image: ImageView? = view.findViewById(R.id.imgPoster)
         private val hqId = view.findViewById<TextView>(R.id.txtId)
 
         @SuppressLint("SetTextI18n")
         fun bind(hqDetails: HqModel) {
             hqId.text = " # ${hqDetails.id}"
-            val imagePath = hqDetails.thumbnail?.getImagePath()
-            Picasso.get().load(imagePath).into(_image)
+            val thumbnailPath = hqDetails.thumbnail?.getThumbnailPath()
+            Picasso.get().load(thumbnailPath).into(_thumbnail)
+
+            if (_image != null) {
+                val imagePath = hqDetails.images[0].getImagePath()
+                Picasso.get().load(imagePath).into(_image)
+            }
         }
     }
 

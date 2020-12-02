@@ -38,7 +38,7 @@ class HqDetailsActivity : AppCompatActivity() {
         val title = intent.getStringExtra("TITLE")
         val issueNumber = intent.getStringExtra("ISSUE_NUMBER")
         val description = intent.getStringExtra("DESCRIPTION")
-        val pageCount = intent.getStringExtra("PAGE_COUNT")
+        val pageCount = intent.getIntExtra("PAGE_COUNT", 0)
         val date = intent.getStringExtra("DATE")
         val price = intent.getStringExtra("PRICE")
         val thumbnail = intent.getStringExtra("THUMBNAIL")
@@ -56,7 +56,7 @@ class HqDetailsActivity : AppCompatActivity() {
         descriptionVw.text = description
         dateVw.text = date
         priceVw.text = price
-        pagesVw.text = pageCount
+        pagesVw.text = pageCount.toString()
 
         Picasso.get()
             .load(thumbnail)

@@ -3,7 +3,6 @@ package com.example.desafio_webservice_digital_house.main.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -43,16 +42,19 @@ class MainActivity : AppCompatActivity() {
         val recyclerViewPhotos = findViewById<RecyclerView>(R.id.recyclerView)
 
         val viewAdapterPhotos = HqMainAdapter(hqList) {
+            val date = "${(it.dates[0].date.toString()).slice(IntRange(24, 27))} ${(it.dates[0].date.toString()).slice(IntRange(4, 10))}"
+            val price = it.prices[0].price.toString()
+
             val intent = Intent(this@MainActivity, HqDetailsActivity::class.java)
             intent.putExtra("ID", it.id)
             intent.putExtra("TITLE", it.title)
             intent.putExtra("ISSUE_NUMBER", it.issueNumber)
             intent.putExtra("DESCRIPTION", it.description)
             intent.putExtra("PAGE_COUNT", it.pageCount)
-            intent.putExtra("DATE", it.dates.lastIndex)
-            intent.putExtra("PRICE", it.prices.lastIndex)
-            intent.putExtra("THUMBNAIL", it.thumbnail?.getImagePath())
-            intent.putExtra("IMAGE", it.images.size)
+            intent.putExtra("DATE", date)
+            intent.putExtra("PRICE", price)
+            intent.putExtra("THUMBNAIL", it.thumbnail?.getThumbnailPath())
+            intent.putExtra("IMAGE", it.images[0].getImagePath())
 
             startActivity(intent)
         }

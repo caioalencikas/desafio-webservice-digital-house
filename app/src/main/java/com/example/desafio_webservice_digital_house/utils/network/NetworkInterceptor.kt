@@ -1,4 +1,4 @@
-package com.example.desafio_webservice_digital_house.utils
+package com.example.desafio_webservice_digital_house.utils.network
 
 
 import okhttp3.Interceptor
@@ -15,8 +15,8 @@ class NetworkInterceptor : Interceptor {
         val originalHttpUrl = request.url()
 
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter(TS, ts)
             .addQueryParameter(API_KEY, apiKey)
+            .addQueryParameter(TS, ts)
             .addQueryParameter(HASH, getHash(ts))
             .build()
 

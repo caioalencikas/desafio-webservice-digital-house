@@ -1,4 +1,4 @@
-package com.example.desafio_webservice_digital_house.utils
+package com.example.desafio_webservice_digital_house.utils.network
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
