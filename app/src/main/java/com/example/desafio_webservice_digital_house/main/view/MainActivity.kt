@@ -16,9 +16,7 @@ import com.example.desafio_webservice_digital_house.utils.repository.HqRepositor
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var _viewModel: HqMainViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,37 +24,35 @@ class MainActivity : AppCompatActivity() {
 
         createHqView()
 
-        val hq = findViewById<CardView>(R.id.crdHqImage)
-
-
-
     }
 
     private fun createHqView() {
         _viewModel = ViewModelProvider(
             this,
-            HqMainViewModel.HqMainViewModelFactory(HqRepository(this))
+            HqMainViewModel.HqMainViewModelFactory(HqRepository())
         ).get(HqMainViewModel::class.java)
 
-        _viewModel.hqList.observe(this, Observer {
+        _viewModel.getList().observe({ lifecycle }, Observer {
             createHqList(it)
         })
 
-        _viewModel.getHqList()
     }
 
-    private fun createHqList(hqList: MutableList<HqModel>) {
+    private fun createHqList(hqList: List<HqModel>) {
         val viewManagerPhotos = GridLayoutManager(this, 3)
         val recyclerViewPhotos = findViewById<RecyclerView>(R.id.recyclerView)
 
         val viewAdapterPhotos = HqMainAdapter(hqList) {
-            val intent = Intent(this, HqDetailsActivity::class.java)
-            intent.putExtra("NAME", it.name)
-            intent.putExtra("DATE", it.datePublished)
-            intent.putExtra("SUMMARY", it.summary)
-            intent.putExtra("IMAGE", it.image)
-            intent.putExtra("PRICE", it.price)
-            intent.putExtra("PAGES", it.pages)
+            val intent = Intent(this@MainActivity, HqDetailsActivity::class.java)
+            intent.putExtra("ID", it.id)
+            intent.putExtra("TITLE", it.title)
+            intent.putExtra("ISSUE_NUMBER", it.issueNumber)
+            intent.putExtra("DESCRIPTION", it.description)
+            intent.putExtra("PAGE_COUNT", it.pageCount)
+            intent.putExtra("DATE", it.dates.lastIndex)
+            intent.putExtra("PRICE", it.prices.lastIndex)
+            intent.putExtra("THUMBNAIL", it.thumbnail?.getImagePath())
+            intent.putExtra("IMAGE", it.images.size)
 
             startActivity(intent)
         }

@@ -24,17 +24,19 @@
 
             <ImageView
                 android:id="@+id/imgHqMain"
-                android:layout_width="85dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="170dp"
+                android:scaleType="centerCrop"
                 tools:src="@drawable/img_splash_screen"
                 />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="#96"
+            tools:text="#96"
             android:textColor="@color/white"
             />
 

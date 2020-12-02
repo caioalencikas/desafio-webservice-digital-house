@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.desafio_webservice_digital_house">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,16 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafiowebservicedigitalhouse">
-        <activity android:name=".detail.view.HqDetailsActivity"></activity>
-        <activity android:name=".account.RegisterActivity"></activity>
-        <activity android:name=".account.LoginActivity">
+        <activity android:name=".detail.view.ImageActivity"></activity>
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.view.MainActivity"></activity>
+        <activity android:name=".detail.view.HqDetailsActivity" />
+        <activity
+            android:name=".account.RegisterActivity"
+            android:label="Register"
+            android:parentActivityName=".account.LoginActivity"
+            android:theme="@style/Theme.ActionBar" />
+        <activity android:name=".account.LoginActivity" />
+        <activity android:name=".main.view.MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -40,6 +40,7 @@
                     app:hintTextColor="@color/red">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTxtNameRegister"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress" />
@@ -57,6 +58,7 @@
                     app:hintTextColor="@color/red">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTxtEmailRegister"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress" />
@@ -73,6 +75,7 @@
                     app:hintTextColor="@color/red">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTxtPasswordRegister"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword" />
@@ -95,22 +98,22 @@
 
     </androidx.cardview.widget.CardView>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginHorizontal="150dp"
-        android:layout_marginTop="130dp"
-        android:src="@drawable/ic_outline_account_circle_24"
+        android:layout_marginHorizontal="160dp"
+        android:layout_marginTop="115dp"
+        android:src="@drawable/img_account"
         android:translationZ="12dp"
         />
 
     <View
         android:id="@+id/background"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="150dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginHorizontal="130dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/circle_shape"
         android:translationZ="10dp"
         />

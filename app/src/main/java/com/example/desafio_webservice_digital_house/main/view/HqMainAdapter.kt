@@ -1,9 +1,11 @@
 package com.example.desafio_webservice_digital_house.main.view
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafio_webservice_digital_house.R
 import com.example.desafio_webservice_digital_house.utils.model.HqModel
@@ -14,16 +16,14 @@ class HqMainAdapter (private val dataset: List<HqModel>, private val listener: (
 
     class HqMainViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val _image: ImageView = view.findViewById(R.id.imgHqMain)
+        private val hqId = view.findViewById<TextView>(R.id.txtId)
 
+        @SuppressLint("SetTextI18n")
         fun bind(hqDetails: HqModel) {
-
-            val image = hqDetails.image
-
-            Picasso.get()
-                .load(image)
-                .into(_image)
+            hqId.text = " # ${hqDetails.id}"
+            val imagePath = hqDetails.thumbnail?.getImagePath()
+            Picasso.get().load(imagePath).into(_image)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HqMainViewHolder {

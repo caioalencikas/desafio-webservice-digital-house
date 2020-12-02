@@ -1,15 +1,27 @@
 package com.example.desafio_webservice_digital_house.utils
 
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkUtils {
     companion object {
-        private const val BASE_URL = "https://api.chucknorris.io/jokes/"
+        private const val BASE_URL = "https://gateway.marvel.com/"
 
-        fun getRetrofitInstance(): Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        private val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss-SSSS").create()
+
+        fun getRetrofitInstance(): Retrofit {
+            val client = OkHttpClient
+                .Builder()
+                .addInterceptor(NetworkInterceptor())
+                .build()
+
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build()
+        }
     }
 }

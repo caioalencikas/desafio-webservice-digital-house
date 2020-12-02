@@ -1,5 +1,6 @@
 package com.example.desafio_webservice_digital_house.detail.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -7,47 +8,82 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.desafio_webservice_digital_house.R
-import com.example.desafio_webservice_digital_house.detail.viewModel.HqDetailsViewModel
+import com.example.desafio_webservice_digital_house.main.viewModel.HqMainViewModel
 import com.example.desafio_webservice_digital_house.utils.repository.HqRepository
+import com.squareup.picasso.Picasso
 
 class HqDetailsActivity : AppCompatActivity() {
 
-    private lateinit var _viewModel: HqDetailsViewModel
+    private lateinit var _viewModel: HqMainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hq_details)
 
-        val _intent = intent
-        val hqName: String = _intent.getStringExtra("NAME")!!
-        val hqDatePublished: String = _intent.getStringExtra("DATE")!!
-        val hqSummary: String = _intent.getStringExtra("SUMMARY")!!
-        val hqImage: Int = _intent.getIntExtra("IMAGE", 0)!!
-        val hqPrice: String = _intent.getDoubleExtra("PRICE", 0.0).toString()!!
-        val hqPages: String = _intent.getIntExtra("PAGES",0).toString()!!
+        val imgHqDetails = getData()
+        detailsView()
+        openImage(imgHqDetails)
 
-        val image = this.findViewById<ImageView>(R.id.imgHqDetails)
-        val name = this.findViewById<TextView>(R.id.txtNameHqDetails)
-        val summary = this.findViewById<TextView>(R.id.txtSummaryHqDetails)
-        val date = this.findViewById<TextView>(R.id.txtDateHqDetails)
-        val price = this.findViewById<TextView>(R.id.txtPriceHqDetails)
-        val pages = this.findViewById<TextView>(R.id.txtPagesHqDetails)
+        val back = findViewById<ImageView>(R.id.imgBack)
 
-        name.text = hqName
-        summary.text = hqSummary
-        date.text = hqDatePublished
-        price.text = hqPrice
-        pages.text = hqPages
+        back.setOnClickListener {
+            onBackPressed()
+        }
 
-        image.setImageResource(hqImage)
-
-        _viewModel = ViewModelProvider(
-            this,
-            HqDetailsViewModel.HqDetailsViewModelFactory(HqRepository(this))
-        ).get(HqDetailsViewModel::class.java)
-
-
-        _viewModel.getHqList()
 
     }
+
+    private fun getData(): String? {
+        val id = intent.getStringExtra("ID")
+        val title = intent.getStringExtra("TITLE")
+        val issueNumber = intent.getStringExtra("ISSUE_NUMBER")
+        val description = intent.getStringExtra("DESCRIPTION")
+        val pageCount = intent.getStringExtra("PAGE_COUNT")
+        val date = intent.getStringExtra("DATE")
+        val price = intent.getStringExtra("PRICE")
+        val thumbnail = intent.getStringExtra("THUMBNAIL")
+        val image = intent.getStringExtra("IMAGE")
+
+        val imageVw = this.findViewById<ImageView>(R.id.imgHqDetails)
+        val titleVw = this.findViewById<TextView>(R.id.txtTitleHqDetails)
+        val descriptionVw = this.findViewById<TextView>(R.id.txtDescriptionHqDetails)
+        val dateVw = this.findViewById<TextView>(R.id.txtDateHqDetails)
+        val priceVw = this.findViewById<TextView>(R.id.txtPriceHqDetails)
+        val pagesVw = this.findViewById<TextView>(R.id.txtPagesHqDetails)
+        val posterVw = this.findViewById<ImageView>(R.id.imgPoster)
+
+        titleVw.text = title
+        descriptionVw.text = description
+        dateVw.text = date
+        priceVw.text = price
+        pagesVw.text = pageCount
+
+        Picasso.get()
+            .load(thumbnail)
+            .into(imageVw)
+
+        Picasso.get()
+            .load(image)
+            .into(posterVw)
+
+
+        return thumbnail
+    }
+
+    private fun detailsView() {
+        _viewModel = ViewModelProvider(
+            this,
+            HqMainViewModel.HqMainViewModelFactory(HqRepository())
+        ).get(HqMainViewModel::class.java)
+    }
+
+    private fun openImage(imgHqDetails: String?) {
+        val imgHqDetailsVw = findViewById<ImageView>(R.id.imgHqDetails)
+        imgHqDetailsVw.setOnClickListener {
+            val intent = Intent(this, ImageActivity::class.java)
+            intent.putExtra("THUMBNAIL", imgHqDetails)
+            startActivity(intent)
+        }
+    }
+
 }

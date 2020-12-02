@@ -1,11 +1,15 @@
 package com.example.desafio_webservice_digital_house.utils.model
 
+import com.google.gson.annotations.SerializedName
+
 data class HqModel (
     val id: Int
-    , val image: Int
-    , val name: String
-    , val summary: String
-    , val datePublished: String
-    , val price: Double
-    , val pages: Int
+    , val title: String
+    , val issueNumber: Double
+    , val description: String
+    , val pageCount: Int
+    , val dates: List<DateModel>
+    , val prices: List<PriceModel>
+    , val thumbnail: ThumbnailModel?
+    , val images: List<ImageModel>
     )
